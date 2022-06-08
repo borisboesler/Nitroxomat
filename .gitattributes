@@ -1,0 +1,8 @@
+# copy from
+# https://github.com/petervanderdoes/gitflow-avh/blob/develop/.gitattributes
+
+* text=auto
+
+*.awk  text eol=lf
+*.sed  text eol=lf
+*.sh   text eol=lf

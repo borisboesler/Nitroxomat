@@ -1,0 +1,696 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		25AF4CAB285106350030FC09 /* GasMixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AF4CAA285106350030FC09 /* GasMixture.swift */; };
+		25AF4CAD285106B20030FC09 /* PPO2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AF4CAC285106B20030FC09 /* PPO2View.swift */; };
+		25AF4CAF285106EA0030FC09 /* FO2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AF4CAE285106EA0030FC09 /* FO2View.swift */; };
+		25AF4CB1285107150030FC09 /* MODView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AF4CB0285107150030FC09 /* MODView.swift */; };
+		25AF4CB3285107370030FC09 /* EADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AF4CB2285107370030FC09 /* EADView.swift */; };
+		25AF4CB5285107630030FC09 /* LegalNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AF4CB4285107630030FC09 /* LegalNoticeView.swift */; };
+		25AF4CB7285107850030FC09 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AF4CB6285107850030FC09 /* AboutView.swift */; };
+		25AF4CBB285109CA0030FC09 /* ObjcExceptionBridging in Frameworks */ = {isa = PBXBuildFile; productRef = 25AF4CBA285109CA0030FC09 /* ObjcExceptionBridging */; };
+		25AF4CBD285109CA0030FC09 /* XCGLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 25AF4CBC285109CA0030FC09 /* XCGLogger */; };
+		25F9763A2851023C00510973 /* NitroxomatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F976392851023C00510973 /* NitroxomatApp.swift */; };
+		25F9763C2851023C00510973 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F9763B2851023C00510973 /* ContentView.swift */; };
+		25F9763E2851023E00510973 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25F9763D2851023E00510973 /* Assets.xcassets */; };
+		25F976412851023E00510973 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25F976402851023E00510973 /* Preview Assets.xcassets */; };
+		25F9764B2851023E00510973 /* NitroxomatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F9764A2851023E00510973 /* NitroxomatTests.swift */; };
+		25F976552851023E00510973 /* NitroxomatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F976542851023E00510973 /* NitroxomatUITests.swift */; };
+		25F976572851023E00510973 /* NitroxomatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F976562851023E00510973 /* NitroxomatUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		25F976472851023E00510973 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25F9762E2851023C00510973 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25F976352851023C00510973;
+			remoteInfo = Nitroxomat;
+		};
+		25F976512851023E00510973 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25F9762E2851023C00510973 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25F976352851023C00510973;
+			remoteInfo = Nitroxomat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		25AF4CAA285106350030FC09 /* GasMixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasMixture.swift; sourceTree = "<group>"; };
+		25AF4CAC285106B20030FC09 /* PPO2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPO2View.swift; sourceTree = "<group>"; };
+		25AF4CAE285106EA0030FC09 /* FO2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FO2View.swift; sourceTree = "<group>"; };
+		25AF4CB0285107150030FC09 /* MODView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MODView.swift; sourceTree = "<group>"; };
+		25AF4CB2285107370030FC09 /* EADView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EADView.swift; sourceTree = "<group>"; };
+		25AF4CB4285107630030FC09 /* LegalNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticeView.swift; sourceTree = "<group>"; };
+		25AF4CB6285107850030FC09 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		25AF4CB8285107E20030FC09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		25F976362851023C00510973 /* Nitroxomat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nitroxomat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		25F976392851023C00510973 /* NitroxomatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitroxomatApp.swift; sourceTree = "<group>"; };
+		25F9763B2851023C00510973 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		25F9763D2851023E00510973 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		25F976402851023E00510973 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		25F976462851023E00510973 /* NitroxomatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NitroxomatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		25F9764A2851023E00510973 /* NitroxomatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitroxomatTests.swift; sourceTree = "<group>"; };
+		25F976502851023E00510973 /* NitroxomatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NitroxomatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		25F976542851023E00510973 /* NitroxomatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitroxomatUITests.swift; sourceTree = "<group>"; };
+		25F976562851023E00510973 /* NitroxomatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitroxomatUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		25F976332851023C00510973 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25AF4CBB285109CA0030FC09 /* ObjcExceptionBridging in Frameworks */,
+				25AF4CBD285109CA0030FC09 /* XCGLogger in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25F976432851023E00510973 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25F9764D2851023E00510973 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		25AF4CA8285105A10030FC09 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				25AF4CAA285106350030FC09 /* GasMixture.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		25AF4CA9285105D80030FC09 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				25AF4CAC285106B20030FC09 /* PPO2View.swift */,
+				25AF4CAE285106EA0030FC09 /* FO2View.swift */,
+				25AF4CB0285107150030FC09 /* MODView.swift */,
+				25AF4CB2285107370030FC09 /* EADView.swift */,
+				25AF4CB4285107630030FC09 /* LegalNoticeView.swift */,
+				25AF4CB6285107850030FC09 /* AboutView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		25F9762D2851023C00510973 = {
+			isa = PBXGroup;
+			children = (
+				25F976382851023C00510973 /* Nitroxomat */,
+				25F976492851023E00510973 /* NitroxomatTests */,
+				25F976532851023E00510973 /* NitroxomatUITests */,
+				25F976372851023C00510973 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		25F976372851023C00510973 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				25F976362851023C00510973 /* Nitroxomat.app */,
+				25F976462851023E00510973 /* NitroxomatTests.xctest */,
+				25F976502851023E00510973 /* NitroxomatUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		25F976382851023C00510973 /* Nitroxomat */ = {
+			isa = PBXGroup;
+			children = (
+				25AF4CB8285107E20030FC09 /* Info.plist */,
+				25AF4CA9285105D80030FC09 /* Views */,
+				25AF4CA8285105A10030FC09 /* Models */,
+				25F976392851023C00510973 /* NitroxomatApp.swift */,
+				25F9763B2851023C00510973 /* ContentView.swift */,
+				25F9763D2851023E00510973 /* Assets.xcassets */,
+				25F9763F2851023E00510973 /* Preview Content */,
+			);
+			path = Nitroxomat;
+			sourceTree = "<group>";
+		};
+		25F9763F2851023E00510973 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				25F976402851023E00510973 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		25F976492851023E00510973 /* NitroxomatTests */ = {
+			isa = PBXGroup;
+			children = (
+				25F9764A2851023E00510973 /* NitroxomatTests.swift */,
+			);
+			path = NitroxomatTests;
+			sourceTree = "<group>";
+		};
+		25F976532851023E00510973 /* NitroxomatUITests */ = {
+			isa = PBXGroup;
+			children = (
+				25F976542851023E00510973 /* NitroxomatUITests.swift */,
+				25F976562851023E00510973 /* NitroxomatUITestsLaunchTests.swift */,
+			);
+			path = NitroxomatUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		25F976352851023C00510973 /* Nitroxomat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25F9765A2851023E00510973 /* Build configuration list for PBXNativeTarget "Nitroxomat" */;
+			buildPhases = (
+				25AF4CBE28510A480030FC09 /* ShellScript */,
+				25F976322851023C00510973 /* Sources */,
+				25F976332851023C00510973 /* Frameworks */,
+				25F976342851023C00510973 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Nitroxomat;
+			packageProductDependencies = (
+				25AF4CBA285109CA0030FC09 /* ObjcExceptionBridging */,
+				25AF4CBC285109CA0030FC09 /* XCGLogger */,
+			);
+			productName = Nitroxomat;
+			productReference = 25F976362851023C00510973 /* Nitroxomat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		25F976452851023E00510973 /* NitroxomatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25F9765D2851023E00510973 /* Build configuration list for PBXNativeTarget "NitroxomatTests" */;
+			buildPhases = (
+				25F976422851023E00510973 /* Sources */,
+				25F976432851023E00510973 /* Frameworks */,
+				25F976442851023E00510973 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				25F976482851023E00510973 /* PBXTargetDependency */,
+			);
+			name = NitroxomatTests;
+			productName = NitroxomatTests;
+			productReference = 25F976462851023E00510973 /* NitroxomatTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		25F9764F2851023E00510973 /* NitroxomatUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25F976602851023E00510973 /* Build configuration list for PBXNativeTarget "NitroxomatUITests" */;
+			buildPhases = (
+				25F9764C2851023E00510973 /* Sources */,
+				25F9764D2851023E00510973 /* Frameworks */,
+				25F9764E2851023E00510973 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				25F976522851023E00510973 /* PBXTargetDependency */,
+			);
+			name = NitroxomatUITests;
+			productName = NitroxomatUITests;
+			productReference = 25F976502851023E00510973 /* NitroxomatUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		25F9762E2851023C00510973 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					25F976352851023C00510973 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					25F976452851023E00510973 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 25F976352851023C00510973;
+					};
+					25F9764F2851023E00510973 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 25F976352851023C00510973;
+					};
+				};
+			};
+			buildConfigurationList = 25F976312851023C00510973 /* Build configuration list for PBXProject "Nitroxomat" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 25F9762D2851023C00510973;
+			packageReferences = (
+				25AF4CB9285109CA0030FC09 /* XCRemoteSwiftPackageReference "XCGLogger" */,
+			);
+			productRefGroup = 25F976372851023C00510973 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				25F976352851023C00510973 /* Nitroxomat */,
+				25F976452851023E00510973 /* NitroxomatTests */,
+				25F9764F2851023E00510973 /* NitroxomatUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		25F976342851023C00510973 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25F976412851023E00510973 /* Preview Assets.xcassets in Resources */,
+				25F9763E2851023E00510973 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25F976442851023E00510973 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25F9764E2851023E00510973 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		25AF4CBE28510A480030FC09 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n# for debugging/inspection purposses:\n# for line in $(printenv); do echo $line; done\n\n# for a RELEASE our current HEAD has a tag. we use this tag as version,\n# assuming that the tag format is release/x.y.z[bla]. during development\n# this number is quite a mess. after building the version is correct\nrelease=$(basename $(git describe --tags --always))\n\n# to be conform with some apple requirements (see above bundle version) we use release + hash\n#\U0013 build=$release-$(git log --oneline HEAD^1.. | awk '{print $1 }')\n# or\n# build=$(git describe --tags --always --dirty)\n# build=`git log -n1 --date=short --format=\"%ad (%h)\"`\nbuild=$(git describe --dirty)\n\n# the plist file to be modified\nplist_path=$INFOPLIST_FILE\n\n# the build configuration (Debug|Release)\n#echo $CONFIGURATION\n\n# PlistBuddy executable\nPLISTBUDDY=/usr/libexec/PlistBuddy\n\n# set the \"short version\" to $build\n#$PLISTBUDDY -c \"Add :CFBundleShortVersionString string $release\" \"$plist_path\"\n$PLISTBUDDY -c \"Set :CFBundleShortVersionString $release\" \"$plist_path\"\n\n# if this is a RELEASE build then set CFBundleVersion to $release, else to build\ncase $CONFIGURATION in\n  Release)  $PLISTBUDDY -c \"Set :CFBundleVersion $release\" \"$plist_path\";;\n  *)        $PLISTBUDDY -c \"Set :CFBundleVersion $build\" \"$plist_path\";;\nesac\n\n# end-of-file\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		25F976322851023C00510973 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25F9763A2851023C00510973 /* NitroxomatApp.swift in Sources */,
+				25AF4CAB285106350030FC09 /* GasMixture.swift in Sources */,
+				25F9763C2851023C00510973 /* ContentView.swift in Sources */,
+				25AF4CAD285106B20030FC09 /* PPO2View.swift in Sources */,
+				25AF4CAF285106EA0030FC09 /* FO2View.swift in Sources */,
+				25AF4CB3285107370030FC09 /* EADView.swift in Sources */,
+				25AF4CB1285107150030FC09 /* MODView.swift in Sources */,
+				25AF4CB5285107630030FC09 /* LegalNoticeView.swift in Sources */,
+				25AF4CB7285107850030FC09 /* AboutView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25F976422851023E00510973 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25F9764B2851023E00510973 /* NitroxomatTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25F9764C2851023E00510973 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25F976552851023E00510973 /* NitroxomatUITests.swift in Sources */,
+				25F976572851023E00510973 /* NitroxomatUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		25F976482851023E00510973 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25F976352851023C00510973 /* Nitroxomat */;
+			targetProxy = 25F976472851023E00510973 /* PBXContainerItemProxy */;
+		};
+		25F976522851023E00510973 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25F976352851023C00510973 /* Nitroxomat */;
+			targetProxy = 25F976512851023E00510973 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		25F976582851023E00510973 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		25F976592851023E00510973 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		25F9765B2851023E00510973 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Nitroxomat/Preview Content\"";
+				DEVELOPMENT_TEAM = Y9CRDMAX8T;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Nitroxomat/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.borisboesler.iOS.Nitroxomat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		25F9765C2851023E00510973 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Nitroxomat/Preview Content\"";
+				DEVELOPMENT_TEAM = Y9CRDMAX8T;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Nitroxomat/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.borisboesler.iOS.Nitroxomat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		25F9765E2851023E00510973 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y9CRDMAX8T;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.borisboesler.iOS.Nitroxomat.NitroxomatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nitroxomat.app/Nitroxomat";
+			};
+			name = Debug;
+		};
+		25F9765F2851023E00510973 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y9CRDMAX8T;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.borisboesler.iOS.Nitroxomat.NitroxomatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nitroxomat.app/Nitroxomat";
+			};
+			name = Release;
+		};
+		25F976612851023E00510973 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y9CRDMAX8T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.borisboesler.iOS.Nitroxomat.NitroxomatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Nitroxomat;
+			};
+			name = Debug;
+		};
+		25F976622851023E00510973 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y9CRDMAX8T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.borisboesler.iOS.Nitroxomat.NitroxomatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Nitroxomat;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		25F976312851023C00510973 /* Build configuration list for PBXProject "Nitroxomat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25F976582851023E00510973 /* Debug */,
+				25F976592851023E00510973 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25F9765A2851023E00510973 /* Build configuration list for PBXNativeTarget "Nitroxomat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25F9765B2851023E00510973 /* Debug */,
+				25F9765C2851023E00510973 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25F9765D2851023E00510973 /* Build configuration list for PBXNativeTarget "NitroxomatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25F9765E2851023E00510973 /* Debug */,
+				25F9765F2851023E00510973 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25F976602851023E00510973 /* Build configuration list for PBXNativeTarget "NitroxomatUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25F976612851023E00510973 /* Debug */,
+				25F976622851023E00510973 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		25AF4CB9285109CA0030FC09 /* XCRemoteSwiftPackageReference "XCGLogger" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DaveWoodCom/XCGLogger.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		25AF4CBA285109CA0030FC09 /* ObjcExceptionBridging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25AF4CB9285109CA0030FC09 /* XCRemoteSwiftPackageReference "XCGLogger" */;
+			productName = ObjcExceptionBridging;
+		};
+		25AF4CBC285109CA0030FC09 /* XCGLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25AF4CB9285109CA0030FC09 /* XCRemoteSwiftPackageReference "XCGLogger" */;
+			productName = XCGLogger;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 25F9762E2851023C00510973 /* Project object */;
+}
