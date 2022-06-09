@@ -21,7 +21,7 @@ options:
     group_by: Type
     sort_by: Title
     title_maps:
-      docs: Documention
+      docs: Documentation
       chore: Chores
       feat: Features
       fix: Bug Fixes
