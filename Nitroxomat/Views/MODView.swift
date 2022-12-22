@@ -20,7 +20,6 @@ struct MODView: View {
       Text("MOD: \(MODValue, specifier: "%3.1f")m") // round up
       Slider(value: $MODValue, in: MODMinimum ... MODMaximum, step: 1.0,
              onEditingChanged: { _ in
-        // TODO:
         FO2Value = Nitrox.getBestFractionO2(forMOD: MODValue, withPPO2: PPO2Value)
         defaults.set(FO2Value, forKey: KeyFO2)
         // set FO2 in gas mixture
@@ -37,7 +36,7 @@ struct MODView: View {
       },
              minimumValueLabel: Text("\(Int(MODMinimum))m"),
              maximumValueLabel: Text("\(Int(MODMaximum))m")) { Text("") } // don't know what tis text is for, it does not appear
-        .accentColor(Color.blue)
+             .accentColor(Color.blue)
     }
     // .background(Color.gray)
     // or

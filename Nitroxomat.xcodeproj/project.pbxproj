@@ -181,6 +181,7 @@
 				25F976322851023C00510973 /* Sources */,
 				25F976332851023C00510973 /* Frameworks */,
 				25F976342851023C00510973 /* Resources */,
+				257BFDE72954B3ED00608A5B /* Run Script - Add Warnings in Xcode for special keywords */,
 			);
 			buildRules = (
 			);
@@ -304,6 +305,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		257BFDE72954B3ED00608A5B /* Run Script - Add Warnings in Xcode for special keywords */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - Add Warnings in Xcode for special keywords";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n# Add warning for special keywords in swift-code.\n# Source: https://krakendev.io/blog/generating-warnings-in-xcode\n\nTAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" -type f \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"\n";
+		};
 		25AF4CBE28510A480030FC09 /* Run Script - Write PList file */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
