@@ -14,28 +14,29 @@ struct MODView: View {
   @Binding var FO2Value: Double
   @Binding var MODValue: Double
   @Binding var EADValue: Double
-
+  
   var body: some View {
     VStack {
       Text("MOD: \(MODValue, specifier: "%3.1f")m") // round up
       Slider(value: $MODValue, in: MODMinimum ... MODMaximum, step: 1.0,
              onEditingChanged: { _ in
-               // TODO:
-               FO2Value = Nitrox.getBestFractionO2(forMOD: MODValue, withPPO2: PPO2Value)
-               defaults.set(FO2Value, forKey: KeyFO2)
-               // set FO2 in gas mixture
-               Nitrox.FractionOxygen = FO2Value
-               loggerGUI.debug("slider MOD moved to \(MODValue)")
-
-               // update UI - does not work
-               self.MODValue = Nitrox.getMOD(withMaxPPO2: self.PPO2Value)
-               self.EADValue = Nitrox.getEAD(withMaxPPO2: self.PPO2Value)
-
-               loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(Nitrox.FractionOxygen)) = \(self.MODValue)")
-               loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
-             },
-             minimumValueLabel: Text("\(Int(MODMinimum))m").foregroundColor(SliderMinMaxValueColor),
-             maximumValueLabel: Text("\(Int(MODMaximum))m").foregroundColor(SliderMinMaxValueColor)) { Text("") } // don't know what tis text is for, it does not appear
+        // TODO:
+        FO2Value = Nitrox.getBestFractionO2(forMOD: MODValue, withPPO2: PPO2Value)
+        defaults.set(FO2Value, forKey: KeyFO2)
+        // set FO2 in gas mixture
+        Nitrox.FractionOxygen = FO2Value
+        
+        loggerGUI.debug("slider MOD moved to \(MODValue)")
+        
+        // update UI - does not work
+        self.MODValue = Nitrox.getMOD(withMaxPPO2: self.PPO2Value)
+        self.EADValue = Nitrox.getEAD(withMaxPPO2: self.PPO2Value)
+        
+        loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(Nitrox.FractionOxygen)) = \(self.MODValue)")
+        loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
+      },
+             minimumValueLabel: Text("\(Int(MODMinimum))m"),
+             maximumValueLabel: Text("\(Int(MODMaximum))m")) { Text("") } // don't know what tis text is for, it does not appear
         .accentColor(Color.blue)
     }
     // .background(Color.gray)
@@ -58,7 +59,7 @@ struct MODView_Previews: PreviewProvider {
   @State private var MODValue: Double = Nitrox.getMOD(withMaxPPO2: defaultPPO2)
   /// the current EAD
   @State private var EADValue: Double = Nitrox.getEAD(withMaxPPO2: defaultPPO2)
-
+  
   static var previews: some View {
     // FIXME: How do we fix this?
     MODView(PPO2Value: $PPO2Value, FO2Value: $FO2Value, MODValue: $MODValue, EADValue: $EADValue)

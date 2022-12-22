@@ -2,7 +2,7 @@ style: none
 template: CHANGELOG.tpl.md
 info:
   title: Nitroxomat
-  repository_url: https://github.com/borisboesler/Nitroxomat.git
+  repository_url: https://github.com/borisboesler/Nitroxomat
 options:
   sort: date
   commits:
