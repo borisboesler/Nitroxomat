@@ -177,7 +177,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 25F9765A2851023E00510973 /* Build configuration list for PBXNativeTarget "Nitroxomat" */;
 			buildPhases = (
-				25AF4CBE28510A480030FC09 /* ShellScript */,
+				25AF4CBE28510A480030FC09 /* Run Script - Write PList file */,
 				25F976322851023C00510973 /* Sources */,
 				25F976332851023C00510973 /* Frameworks */,
 				25F976342851023C00510973 /* Resources */,
@@ -304,7 +304,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		25AF4CBE28510A480030FC09 /* ShellScript */ = {
+		25AF4CBE28510A480030FC09 /* Run Script - Write PList file */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -313,6 +313,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script - Write PList file";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -431,6 +432,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -485,6 +487,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

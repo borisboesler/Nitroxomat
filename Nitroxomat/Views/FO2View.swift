@@ -14,30 +14,30 @@ struct FO2View: View {
   @Binding var FO2Value: Double
   @Binding var MODValue: Double
   @Binding var EADValue: Double
-
+  
   var body: some View {
     VStack {
       Text("fO2: \(Int(FO2Value * 100.0))%")
       Slider(value: $FO2Value, in: FO2Minimum ... FO2Maximum, step: 0.010,
              onEditingChanged: { _ in
-               // round FO2Value properly, this is a bugfix
-               FO2Value = Double(Int(FO2Value * 100.0)) / 100.0
-               // store value in user defaults
-               defaults.set(FO2Value, forKey: KeyFO2)
-               // set FO2 in gas mixture
-               Nitrox.FractionOxygen = FO2Value
-               // log using slider
-               loggerGUI.debug("slider fO2 moved to \(FO2Value)")
-
-               // update UI - does not work
-               self.MODValue = Nitrox.getMOD(withMaxPPO2: self.PPO2Value)
-               self.EADValue = Nitrox.getEAD(withMaxPPO2: self.PPO2Value)
-
-               loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(Nitrox.FractionOxygen)) = \(self.MODValue)")
-               loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
-             },
-             minimumValueLabel: Text("\(Int(FO2Minimum * 100.0))%").foregroundColor(SliderMinMaxValueColor),
-             maximumValueLabel: Text("\(Int(FO2Maximum * 100.0))%").foregroundColor(SliderMinMaxValueColor)) { Text("") } // don't know what this text is for, it does not appear, but is needed
+        // round FO2Value properly, this is a bugfix
+        FO2Value = Double(Int(FO2Value * 100.0)) / 100.0
+        // store value in user defaults
+        defaults.set(FO2Value, forKey: KeyFO2)
+        // set FO2 in gas mixture
+        Nitrox.FractionOxygen = FO2Value
+        // log using slider
+        loggerGUI.debug("slider fO2 moved to \(FO2Value)")
+        
+        // update UI - does not work
+        self.MODValue = Nitrox.getMOD(withMaxPPO2: self.PPO2Value)
+        self.EADValue = Nitrox.getEAD(withMaxPPO2: self.PPO2Value)
+        
+        loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(Nitrox.FractionOxygen)) = \(self.MODValue)")
+        loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
+      },
+             minimumValueLabel: Text("\(Int(FO2Minimum * 100.0))%"),
+             maximumValueLabel: Text("\(Int(FO2Maximum * 100.0))%")) { Text("") } // don't know what this text is for, it does not appear, but is needed
         .accentColor(Color.green)
     }
     // .background(Color.gray)

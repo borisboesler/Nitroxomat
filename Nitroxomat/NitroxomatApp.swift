@@ -9,9 +9,9 @@ import SwiftUI
 
 @main
 struct NitroxomatApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  var body: some Scene {
+    WindowGroup {
+      ContentView()
     }
+  }
 }

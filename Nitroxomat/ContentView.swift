@@ -47,6 +47,7 @@ import XCGLogger
 let loggerMix = XCGLogger(identifier: "Nitroxomoat (Mixture)")
 let loggerGUI = XCGLogger(identifier: "Nitroxomoat (GUI)")
 
+
 // MARK: - Nitroxomat User Defaults
 
 /// key to store the PPO2 value
@@ -70,9 +71,9 @@ private let defaultShowLegalNotice = true
 private let defaultShowLegalNotice = defaults.object(forKey: KeyShowLegalNotice) as? Bool ?? true
 #endif
 
+
 // MARK: - Nitroxomat UI Configurtion
 
-let SliderMinMaxValueColor = Color.black
 
 // MARK: - Nitroxomat Global Variables
 
@@ -122,42 +123,43 @@ struct ContentView: View {
       .navigationBarTitle(AppName)
       .navigationBarItems(
         leading:
-        Button(action: {
-          // reset to default PPO2 and gas-mixture AIR
-          self.PPO2Value = defaultPPO2Value
-          defaults.set(PPO2Value, forKey: KeyPPO2)
+          Button(action: {
+            // reset to default PPO2 and gas-mixture AIR
+            self.PPO2Value = defaultPPO2Value
+            defaults.set(PPO2Value, forKey: KeyPPO2)
 
-          self.FO2Value = defaultFO2Value
-          defaults.set(FO2Value, forKey: KeyFO2)
-          Nitrox.FractionOxygen = FO2Value
+            self.FO2Value = defaultFO2Value
+            defaults.set(FO2Value, forKey: KeyFO2)
+            Nitrox.FractionOxygen = FO2Value
 
-          // update UI - does not work
-          self.MODValue = Nitrox.getMOD(withMaxPPO2: self.PPO2Value)
-          self.EADValue = Nitrox.getEAD(withMaxPPO2: self.PPO2Value)
-          loggerGUI.debug("reset sliders")
-          loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(Nitrox.FractionOxygen)) = \(self.MODValue)")
-          loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
+            // update UI - does not work
+            self.MODValue = Nitrox.getMOD(withMaxPPO2: self.PPO2Value)
+            self.EADValue = Nitrox.getEAD(withMaxPPO2: self.PPO2Value)
 
-        }) {
-          Text("Reset")
-        },
+            loggerGUI.debug("reset sliders")
+            loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(Nitrox.FractionOxygen)) = \(self.MODValue)")
+            loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
+          }) {
+            Text("Reset")
+          },
         trailing:
-        NavigationLink(destination: AboutView()) {
-          HStack {
-            Image(systemName: "info.circle")
-              .imageScale(.large)
+          NavigationLink(destination: AboutView()) {
+            HStack {
+              Image(systemName: "info.circle")
+                .imageScale(.large)
+            }
           }
-        }
       )
     } // NavigationView
     .navigationViewStyle(StackNavigationViewStyle())
     // let the user confirm that (s)he is a certified nitrox diver
     .sheet(isPresented: self.$showLegalNotice,
            onDismiss: {
-             self.showLegalNotice = false
-             defaults.set(self.showLegalNotice, forKey: KeyShowLegalNotice)
-             loggerGUI.debug("set defaults.\(KeyShowLegalNotice) notice to \(self.showLegalNotice)")
-           }) {
+      self.showLegalNotice = false
+      defaults.set(self.showLegalNotice, forKey: KeyShowLegalNotice)
+
+      loggerGUI.debug("set defaults.\(KeyShowLegalNotice) notice to \(self.showLegalNotice)")
+    }) {
       LegalNoticeView()
     }
   } // var body: some View
