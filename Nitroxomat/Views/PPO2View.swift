@@ -21,15 +21,15 @@ struct PPO2View: View {
       Slider(value: $PPO2Value, in: PPO2Minimum ... PPO2Maximum, step: 0.1,
              onEditingChanged: { _ in
         // store value in user defaults
-        defaults.set(PPO2Value, forKey: KeyPPO2)
+        defaults.set(PPO2Value, forKey: keyPPO2)
         // log using slider
         loggerGUI.debug("slider ppO2 moved to \(PPO2Value)")
         
         // update UI
-        self.MODValue = Nitrox.getMOD(withMaxPPO2: self.PPO2Value)
-        self.EADValue = Nitrox.getEAD(withMaxPPO2: self.PPO2Value)
+        self.MODValue = gasMixture.getMOD(withMaxPPO2: self.PPO2Value)
+        self.EADValue = gasMixture.getEAD(withMaxPPO2: self.PPO2Value)
         
-        loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(Nitrox.FractionOxygen)) = \(self.MODValue)")
+        loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(gasMixture.fractionOxygen)) = \(self.MODValue)")
         loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
       }
              // minimumValueLabel and maximumValueLabel have no advantage here

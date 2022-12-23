@@ -20,23 +20,23 @@ struct MODView: View {
       Text("MOD: \(MODValue, specifier: "%3.1f")m") // round up
       Slider(value: $MODValue, in: MODMinimum ... MODMaximum, step: 1.0,
              onEditingChanged: { _ in
-        FO2Value = Nitrox.getBestFractionO2(forMOD: MODValue, withPPO2: PPO2Value)
-        defaults.set(FO2Value, forKey: KeyFO2)
+        FO2Value = gasMixture.getBestFractionO2(forMOD: MODValue, withPPO2: PPO2Value)
+        defaults.set(FO2Value, forKey: keyFO2)
         // set FO2 in gas mixture
-        Nitrox.FractionOxygen = FO2Value
+        gasMixture.fractionOxygen = FO2Value
         
         loggerGUI.debug("slider MOD moved to \(MODValue)")
         
         // update UI - does not work
-        self.MODValue = Nitrox.getMOD(withMaxPPO2: self.PPO2Value)
-        self.EADValue = Nitrox.getEAD(withMaxPPO2: self.PPO2Value)
+        self.MODValue = gasMixture.getMOD(withMaxPPO2: self.PPO2Value)
+        self.EADValue = gasMixture.getEAD(withMaxPPO2: self.PPO2Value)
         
-        loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(Nitrox.FractionOxygen)) = \(self.MODValue)")
+        loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(gasMixture.fractionOxygen)) = \(self.MODValue)")
         loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
       },
              minimumValueLabel: Text("\(Int(MODMinimum))m"),
              maximumValueLabel: Text("\(Int(MODMaximum))m")) { Text("") } // don't know what tis text is for, it does not appear
-             .accentColor(Color.blue)
+        .accentColor(Color.blue)
     }
     // .background(Color.gray)
     // or
@@ -55,9 +55,9 @@ struct MODView_Previews: PreviewProvider {
   /// the current fO2
   @State private var FO2Value: Double = defaultFO2
   /// the current MOD
-  @State private var MODValue: Double = Nitrox.getMOD(withMaxPPO2: defaultPPO2)
+  @State private var MODValue: Double = gasMixture.getMOD(withMaxPPO2: defaultPPO2)
   /// the current EAD
-  @State private var EADValue: Double = Nitrox.getEAD(withMaxPPO2: defaultPPO2)
+  @State private var EADValue: Double = gasMixture.getEAD(withMaxPPO2: defaultPPO2)
   
   static var previews: some View {
     // FIXME: How do we fix this?

@@ -45,9 +45,9 @@ struct EADView_Previews: PreviewProvider {
   /// the current fO2
   @State private var FO2Value: Double = defaultFO2
   /// the current MOD
-  @State private var MODValue: Double = Nitrox.getMOD(withMaxPPO2: defaultPPO2)
+  @State private var MODValue: Double = gasMixture.getMOD(withMaxPPO2: defaultPPO2)
   /// the current EAD
-  @State private var EADValue: Double = Nitrox.getEAD(withMaxPPO2: defaultPPO2)
+  @State private var EADValue: Double = gasMixture.getEAD(withMaxPPO2: defaultPPO2)
   
   static var previews: some View {
     // FIXME: How do we fix this?

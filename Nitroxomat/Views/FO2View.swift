@@ -23,17 +23,17 @@ struct FO2View: View {
         // round FO2Value properly, this is a bugfix
         FO2Value = Double(Int(FO2Value * 100.0)) / 100.0
         // store value in user defaults
-        defaults.set(FO2Value, forKey: KeyFO2)
+        defaults.set(FO2Value, forKey: keyFO2)
         // set FO2 in gas mixture
-        Nitrox.FractionOxygen = FO2Value
+        gasMixture.fractionOxygen = FO2Value
         // log using slider
         loggerGUI.debug("slider fO2 moved to \(FO2Value)")
         
         // update UI - does not work
-        self.MODValue = Nitrox.getMOD(withMaxPPO2: self.PPO2Value)
-        self.EADValue = Nitrox.getEAD(withMaxPPO2: self.PPO2Value)
-        
-        loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(Nitrox.FractionOxygen)) = \(self.MODValue)")
+        self.MODValue = gasMixture.getMOD(withMaxPPO2: self.PPO2Value)
+        self.EADValue = gasMixture.getEAD(withMaxPPO2: self.PPO2Value)
+
+        loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(gasMixture.fractionOxygen)) = \(self.MODValue)")
         loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
       },
              minimumValueLabel: Text("\(Int(FO2Minimum * 100.0))%"),
