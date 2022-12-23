@@ -13,6 +13,14 @@ and maximum depth.
 ![Nitroxomat Screenshot](images/screenshot-222x480.png "Nitroxomat Screenshot")
 
 
+## Issues
+
+There are some issues to resove:
+1. With Xcode 14.2 the mechanism to write the `Info.plist` file and
+   use it does not work: the version stays on 1.0. With Xcode 13.2.1
+   it works as excpected. Is the `Info.plist` file not copied?
+
+
 ## License
 
 ![License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)

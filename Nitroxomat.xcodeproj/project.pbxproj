@@ -181,6 +181,8 @@
 				25F976322851023C00510973 /* Sources */,
 				25F976332851023C00510973 /* Frameworks */,
 				25F976342851023C00510973 /* Resources */,
+				257BFDE72954B3ED00608A5B /* Run Script - Add Warnings in Xcode for special keywords */,
+				2571BDB62955B6D200D625CF /* Run Script - Run swiftlint */,
 			);
 			buildRules = (
 			);
@@ -304,8 +306,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2571BDB62955B6D200D625CF /* Run Script - Run swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - Run swiftlint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https: //github.com/realm/SwiftLint\"\nfi\n";
+		};
+		257BFDE72954B3ED00608A5B /* Run Script - Add Warnings in Xcode for special keywords */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - Add Warnings in Xcode for special keywords";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n# Add warning for special keywords in swift-code.\n# Source: https://krakendev.io/blog/generating-warnings-in-xcode\n\nTAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" -type f \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"\n";
+		};
 		25AF4CBE28510A480030FC09 /* Run Script - Write PList file */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -320,7 +359,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n# for debugging/inspection purposses:\n# for line in $(printenv); do echo $line; done\n\n# for a RELEASE our current HEAD has a tag. we use this tag as version,\n# assuming that the tag format is release/x.y.z[bla]. during development\n# this number is quite a mess. after building the version is correct\nrelease=$(basename $(git describe --tags --always))\n\n# to be conform with some apple requirements (see above bundle version) we use release + hash\n#\U0013 build=$release-$(git log --oneline HEAD^1.. | awk '{print $1 }')\n# or\n# build=$(git describe --tags --always --dirty)\n# build=`git log -n1 --date=short --format=\"%ad (%h)\"`\nbuild=$(git describe --dirty)\n\n# the plist file to be modified\nplist_path=$INFOPLIST_FILE\n\n# the build configuration (Debug|Release)\n#echo $CONFIGURATION\n\n# PlistBuddy executable\nPLISTBUDDY=/usr/libexec/PlistBuddy\n\n# set the \"short version\" to $build\n#$PLISTBUDDY -c \"Add :CFBundleShortVersionString string $release\" \"$plist_path\"\n$PLISTBUDDY -c \"Set :CFBundleShortVersionString $release\" \"$plist_path\"\n\n# if this is a RELEASE build then set CFBundleVersion to $release, else to build\ncase $CONFIGURATION in\n  Release)  $PLISTBUDDY -c \"Set :CFBundleVersion $release\" \"$plist_path\";;\n  *)        $PLISTBUDDY -c \"Set :CFBundleVersion $build\" \"$plist_path\";;\nesac\n\n# end-of-file\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n# for debugging/inspection purposses:\n# for line in $(printenv); do echo $line; done\n\n# for a RELEASE our current HEAD has a tag. we use this tag as version,\n# assuming that the tag format is release/x.y.z[bla]. during development\n# this number is quite a mess. after building the version is correct\nrelease=$(basename $(git describe --tags --always))\necho \"RELEASE = \" $release\n\n# to be conform with some apple requirements (see above bundle version) we use release + hash\n#\U0013 build=$release-$(git log --oneline HEAD^1.. | awk '{print $1 }')\n# or\n# build=$(git describe --tags --always --dirty)\n# build=`git log -n1 --date=short --format=\"%ad (%h)\"`\nbuild=$(git describe --dirty)\necho \"BUILD = \" $build\n\n# the plist file to be modified\nplist_file=$INFOPLIST_FILE\n\n# the build configuration (Debug|Release)\n#echo $CONFIGURATION\n\n# PlistBuddy executable\nPLISTBUDDY=/usr/libexec/PlistBuddy\n\n# set the \"short version\" to $build\n#$PLISTBUDDY -c \"Add :CFBundleShortVersionString string $release\" \"$plist_file\"\n$PLISTBUDDY -c \"Set :CFBundleShortVersionString $release\" \"$plist_file\"\n\n# if this is a RELEASE build then set CFBundleVersion to $release, else to build\ncase $CONFIGURATION in\n  Release)  $PLISTBUDDY -c \"Set :CFBundleVersion $release\" \"$plist_file\";;\n  *)        $PLISTBUDDY -c \"Set :CFBundleVersion $build\" \"$plist_file\";;\nesac\n\n# end-of-file\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
