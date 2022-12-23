@@ -20,18 +20,18 @@ let airFractionOxygen = 0.21
 /// fraction of nitrogen is a computed attribute
 class GasMixture {
   // MARK: Lifecycle
-  
+
   /// default init for AIR
   convenience init() {
     self.init(withOxygen: airFractionOxygen)
   }
-  
+
   /// init for some Nitrox
   /// - Parameter FractionOxygen: the fraction of O2 in this gas mixture
   convenience init(withOxygen fractionOxygen: Double) {
     self.init(withOxygen: fractionOxygen, withHelium: 0.0)
   }
-  
+
   /// init for some Trimix
   /// - Parameters:
   ///   - FractionOxygen: the fraction of O2 in this gas mixture
@@ -41,9 +41,9 @@ class GasMixture {
     self.fractionOxygen = fractionOxygen
     self.fractionHelium = fractionHelium
   }
-  
+
   // MARK: Properties with getter/setter Methods
-  
+
   /// fraction of oxygen in this gas mixture
   var fractionOxygen: Double {
     didSet {
@@ -59,7 +59,7 @@ class GasMixture {
       fractionOxygen = round(fractionOxygen * 100.0) / 100.0
     }
   }
-  
+
   /// fraction of helium in this gas mixture
   var fractionHelium: Double {
     didSet {
@@ -73,14 +73,14 @@ class GasMixture {
       fractionHelium = round(fractionHelium * 100.0) / 100.0
     }
   }
-  
+
   /// fraction of nitrogen in this gas mixture
   var fractionNitrogen: Double {
     return (1.0 - fractionOxygen - fractionHelium)
   }
-  
+
   // MARK: - Public Methods
-  
+
   /// get the Maximum Operation of Depth (MOD) for this gas mixture and a given maximum partial pressure of O2
   /// - Parameter maxPPO2: the maximum partial pressure of O2
   /// - Returns: the MOD for this gas mixture and a given maximum partial pressure of O2
@@ -88,7 +88,7 @@ class GasMixture {
     let MOD = ((maxPPO2 / fractionOxygen) - 1.0) * 10.0
     return MOD
   }
-  
+
   /// get the Equivalent Air Depth (EAD) for this gas mixture and a given maximum partial pressure of O2
   /// - Parameter maxPPO2: the maximum partial pressure of O2
   /// - Returns: the EAD for this gas mixture and the given maximal partial pressure of O2
@@ -99,10 +99,9 @@ class GasMixture {
     }
     return EAD
   }
-  
-  /// END = ((fN2 * (Tiefe + 10)) / 0,79) - 10m
-  
+
   /// Equivalent Narcotic Depth
+  /// END = ((fN2 * (Tiefe + 10)) / 0,79) - 10m
   /// - Parameter Depth: the depth for which the END is computed
   /// - Returns: the END for the given depth
   func getEND(withDepth depth: Double) -> Double {
@@ -112,7 +111,7 @@ class GasMixture {
     }
     return END
   }
-  
+
   /// get the best oxygen fraction for this given gas mixture and a given maximum operation of depth
   /// - Parameters:
   ///   - MaxDepth: the maximum operation of depth

@@ -14,7 +14,7 @@ struct FO2View: View {
   @Binding var FO2Value: Double
   @Binding var MODValue: Double
   @Binding var EADValue: Double
-  
+
   var body: some View {
     VStack {
       Text("fO2: \(Int(FO2Value * 100.0))%")
@@ -28,7 +28,7 @@ struct FO2View: View {
         gasMixture.fractionOxygen = FO2Value
         // log using slider
         loggerGUI.debug("slider fO2 moved to \(FO2Value)")
-        
+
         // update UI - does not work
         self.MODValue = gasMixture.getMOD(withMaxPPO2: self.PPO2Value)
         self.EADValue = gasMixture.getEAD(withMaxPPO2: self.PPO2Value)
@@ -37,8 +37,9 @@ struct FO2View: View {
         loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
       },
              minimumValueLabel: Text("\(Int(FO2Minimum * 100.0))%"),
-             maximumValueLabel: Text("\(Int(FO2Maximum * 100.0))%")) { Text("") } // don't know what this text is for, it does not appear, but is needed
-        .accentColor(Color.green)
+             maximumValueLabel: Text("\(Int(FO2Maximum * 100.0))%"),
+             label: { Text("") })
+      .accentColor(Color.green)
     }
     // .background(Color.gray)
     // or

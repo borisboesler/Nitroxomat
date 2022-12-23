@@ -42,11 +42,10 @@ let appName = "Nitroxomat"
 // MARK: - Nitroxomat Loggers
 
 import XCGLogger
-//In your AppDelegate (or other global file), declare a global constant to the default XCGLogger instance.
+// In your AppDelegate (or other global file), declare a global constant to the default XCGLogger instance.
 
 let loggerMix = XCGLogger(identifier: "Nitroxomoat (Mixture)")
 let loggerGUI = XCGLogger(identifier: "Nitroxomoat (GUI)")
-
 
 // MARK: - Nitroxomat User Defaults
 
@@ -71,9 +70,7 @@ private let defaultShowLegalNotice = true
 private let defaultShowLegalNotice = defaults.object(forKey: keyShowLegalNotice) as? Bool ?? true
 #endif
 
-
 // MARK: - Nitroxomat UI Configurtion
-
 
 // MARK: - Nitroxomat Global Variables
 
@@ -139,9 +136,7 @@ struct ContentView: View {
             loggerGUI.debug("reset sliders")
             loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(gasMixture.fractionOxygen)) = \(self.MODValue)")
             loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
-          }) {
-            Text("Reset")
-          },
+          }, label: { Text("Reset") }),
         trailing:
           NavigationLink(destination: AboutView()) {
             HStack {
@@ -150,6 +145,7 @@ struct ContentView: View {
             }
           }
       )
+
     } // NavigationView
     .navigationViewStyle(StackNavigationViewStyle())
     // let the user confirm that (s)he is a certified nitrox diver
@@ -157,11 +153,9 @@ struct ContentView: View {
            onDismiss: {
       self.showLegalNotice = false
       defaults.set(self.showLegalNotice, forKey: keyShowLegalNotice)
-
       loggerGUI.debug("set defaults.\(keyShowLegalNotice) notice to \(self.showLegalNotice)")
-    }) {
-      LegalNoticeView()
-    }
+    },
+           content: { LegalNoticeView() })
   } // var body: some View
 } // struct ContentView: View
 
