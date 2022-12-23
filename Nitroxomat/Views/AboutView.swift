@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-private let BundleVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "no build"
-private let BundleShortVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "no version"
+private let bundleVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "no build"
+private let bundleShortVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "no version"
 
 // MARK: - Views: AboutView
 
@@ -16,19 +16,19 @@ struct AboutView: View {
   var body: some View {
     VStack {
       Spacer()
-      Text(AppName)
+      Text(appName)
         .font(.title)
       Spacer()
       Text("Copyright ©2022 Boris Boesler")
         .font(.title2)
       Spacer()
-      Text("Version: \(BundleShortVersion)")
+      Text("Version: \(bundleShortVersion)")
         .font(.title2)
 #if DEBUG
       Spacer()
       VStack {
         Text("DEBUG Build")
-        Text("Bundle version: \(BundleVersion)")
+        Text("Bundle version: \(bundleVersion)")
       }
       .padding(5)
       .background(Color.red)
@@ -37,7 +37,7 @@ struct AboutView: View {
       Spacer()
     }
     .padding(5)
-    .navigationBarTitle("About " + AppName, displayMode: .inline)
+    .navigationBarTitle("About " + appName, displayMode: .inline)
   }
 }
 

@@ -13,7 +13,7 @@ struct PPO2View: View {
   @Binding var PPO2Value: Double
   @Binding var MODValue: Double
   @Binding var EADValue: Double
-  
+
   var body: some View {
     VStack {
       Text("ppO2 (bar)")
@@ -21,21 +21,19 @@ struct PPO2View: View {
       Slider(value: $PPO2Value, in: PPO2Minimum ... PPO2Maximum, step: 0.1,
              onEditingChanged: { _ in
         // store value in user defaults
-        defaults.set(PPO2Value, forKey: KeyPPO2)
+        defaults.set(PPO2Value, forKey: keyPPO2)
         // log using slider
         loggerGUI.debug("slider ppO2 moved to \(PPO2Value)")
-        
+
         // update UI
-        self.MODValue = Nitrox.getMOD(withMaxPPO2: self.PPO2Value)
-        self.EADValue = Nitrox.getEAD(withMaxPPO2: self.PPO2Value)
-        
-        loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(Nitrox.FractionOxygen)) = \(self.MODValue)")
+        self.MODValue = gasMixture.getMOD(withMaxPPO2: self.PPO2Value)
+        self.EADValue = gasMixture.getEAD(withMaxPPO2: self.PPO2Value)
+
+        loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(gasMixture.fractionOxygen)) = \(self.MODValue)")
         loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
-      }
-             // minimumValueLabel and maximumValueLabel have no advantage here
-      ) { Text("") } // don't know what this text is for, it does not appear, but is needed
-        .accentColor(Color.green)
-      
+      })
+      .accentColor(Color.green)
+
       HStack {
         // this is not nice, but better than fixed
         Text("\(PPO2Minimum, specifier: "%1.1f")")

@@ -37,48 +37,45 @@ let EADMaximum = 110.0
 // MARK: - Nitroxomat Constants
 
 /// the appname
-let AppName = "Nitroxomat"
+let appName = "Nitroxomat"
 
 // MARK: - Nitroxomat Loggers
 
 import XCGLogger
-//In your AppDelegate (or other global file), declare a global constant to the default XCGLogger instance.
+// In your AppDelegate (or other global file), declare a global constant to the default XCGLogger instance.
 
 let loggerMix = XCGLogger(identifier: "Nitroxomoat (Mixture)")
 let loggerGUI = XCGLogger(identifier: "Nitroxomoat (GUI)")
 
-
 // MARK: - Nitroxomat User Defaults
 
 /// key to store the PPO2 value
-let KeyPPO2 = "ppO2"
+let keyPPO2 = "ppO2"
 /// key to store the FO2 value
-let KeyFO2 = "fO2"
+let keyFO2 = "fO2"
 /// key to store if the legal notice should be displayed
-let KeyShowLegalNotice = "showLegalNotice"
+let keyShowLegalNotice = "showLegalNotice"
 
 let defaults = UserDefaults.standard
 
 /// read partial pressure of O2 from settings or use defaultPPO2Value
-let defaultPPO2: Double = defaults.object(forKey: KeyPPO2) as? Double ?? defaultPPO2Value
+let defaultPPO2: Double = defaults.object(forKey: keyPPO2) as? Double ?? defaultPPO2Value
 /// read fraction of O2 from settings or use defaultFO2Value
-let defaultFO2: Double = defaults.object(forKey: KeyFO2) as? Double ?? defaultFO2Value
+let defaultFO2: Double = defaults.object(forKey: keyFO2) as? Double ?? defaultFO2Value
 
 /// check if the user confirmed to be a certified Nitrox diver
 #if DEBUG
 private let defaultShowLegalNotice = true
 #else
-private let defaultShowLegalNotice = defaults.object(forKey: KeyShowLegalNotice) as? Bool ?? true
+private let defaultShowLegalNotice = defaults.object(forKey: keyShowLegalNotice) as? Bool ?? true
 #endif
 
-
 // MARK: - Nitroxomat UI Configurtion
-
 
 // MARK: - Nitroxomat Global Variables
 
 /// create a nitrox calculator with default PPO2 and PO2
-var Nitrox = GasMixture(withOxygen: defaultFO2)
+var gasMixture = GasMixture(withOxygen: defaultFO2)
 
 // MARK: - Views: ContentView
 
@@ -88,9 +85,9 @@ struct ContentView: View {
   /// the current fO2
   @State private var FO2Value: Double = defaultFO2
   /// the current MOD
-  @State private var MODValue: Double = Nitrox.getMOD(withMaxPPO2: defaultPPO2)
+  @State private var MODValue: Double = gasMixture.getMOD(withMaxPPO2: defaultPPO2)
   /// the current EAD
-  @State private var EADValue: Double = Nitrox.getEAD(withMaxPPO2: defaultPPO2)
+  @State private var EADValue: Double = gasMixture.getEAD(withMaxPPO2: defaultPPO2)
 
   @State private var showLegalNotice: Bool = defaultShowLegalNotice
 
@@ -120,28 +117,26 @@ struct ContentView: View {
         EADView(PPO2Value: $PPO2Value, FO2Value: $FO2Value, MODValue: $MODValue, EADValue: $EADValue)
       } // VStack
       .padding(30)
-      .navigationBarTitle(AppName)
+      .navigationBarTitle(appName)
       .navigationBarItems(
         leading:
           Button(action: {
             // reset to default PPO2 and gas-mixture AIR
             self.PPO2Value = defaultPPO2Value
-            defaults.set(PPO2Value, forKey: KeyPPO2)
+            defaults.set(PPO2Value, forKey: keyPPO2)
 
             self.FO2Value = defaultFO2Value
-            defaults.set(FO2Value, forKey: KeyFO2)
-            Nitrox.FractionOxygen = FO2Value
+            defaults.set(FO2Value, forKey: keyFO2)
+            gasMixture.fractionOxygen = FO2Value
 
             // update UI - does not work
-            self.MODValue = Nitrox.getMOD(withMaxPPO2: self.PPO2Value)
-            self.EADValue = Nitrox.getEAD(withMaxPPO2: self.PPO2Value)
+            self.MODValue = gasMixture.getMOD(withMaxPPO2: self.PPO2Value)
+            self.EADValue = gasMixture.getEAD(withMaxPPO2: self.PPO2Value)
 
             loggerGUI.debug("reset sliders")
-            loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(Nitrox.FractionOxygen)) = \(self.MODValue)")
+            loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(gasMixture.fractionOxygen)) = \(self.MODValue)")
             loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
-          }) {
-            Text("Reset")
-          },
+          }, label: { Text("Reset") }),
         trailing:
           NavigationLink(destination: AboutView()) {
             HStack {
@@ -150,18 +145,17 @@ struct ContentView: View {
             }
           }
       )
+
     } // NavigationView
     .navigationViewStyle(StackNavigationViewStyle())
     // let the user confirm that (s)he is a certified nitrox diver
     .sheet(isPresented: self.$showLegalNotice,
            onDismiss: {
       self.showLegalNotice = false
-      defaults.set(self.showLegalNotice, forKey: KeyShowLegalNotice)
-
-      loggerGUI.debug("set defaults.\(KeyShowLegalNotice) notice to \(self.showLegalNotice)")
-    }) {
-      LegalNoticeView()
-    }
+      defaults.set(self.showLegalNotice, forKey: keyShowLegalNotice)
+      loggerGUI.debug("set defaults.\(keyShowLegalNotice) notice to \(self.showLegalNotice)")
+    },
+           content: { LegalNoticeView() })
   } // var body: some View
 } // struct ContentView: View
 
