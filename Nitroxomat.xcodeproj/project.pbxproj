@@ -182,6 +182,7 @@
 				25F976332851023C00510973 /* Frameworks */,
 				25F976342851023C00510973 /* Resources */,
 				257BFDE72954B3ED00608A5B /* Run Script - Add Warnings in Xcode for special keywords */,
+				2571BDB62955B6D200D625CF /* Run Script - Run swiftlint */,
 			);
 			buildRules = (
 			);
@@ -305,6 +306,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2571BDB62955B6D200D625CF /* Run Script - Run swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - Run swiftlint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https: //github.com/realm/SwiftLint\"\nfi\n";
+		};
 		257BFDE72954B3ED00608A5B /* Run Script - Add Warnings in Xcode for special keywords */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
