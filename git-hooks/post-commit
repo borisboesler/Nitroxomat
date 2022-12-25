@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# a git post-commit hook
+# (c) 2022 Boris Boesler
+
 # for debugging/ispection purposses:
 #for line in $(printenv); do echo $line; done
 
