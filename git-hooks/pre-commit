@@ -1,14 +1,13 @@
 #!/bin/bash
 
 # a git pre-commit hook to format swift code
-# (c) 202s Boris Boesler
+# (c) 2022 Boris Boesler
 
 # for debugging/inspection purposses:
 #for line in $(printenv); do echo $line; done
 
 # remainders that there is something going on
 #say "pre committing"
-echo "Executing $0 .."
 
 # set exit codes
 EXIT_SUCCESS=0
@@ -46,5 +45,4 @@ GIT_FORMAT_STAGED_OPTIONS='--stdinpath "{}"'
 $GIT_FORMAT_STAGED_EXE --formatter "$SWIFT_FORMAT_EXE stdin $GIT_FORMAT_STAGED_OPTIONS" "*.swift"
 
 # finally exit with SUCCESS
-echo "Executed $0"
 exit $EXIT_SUCCESS
