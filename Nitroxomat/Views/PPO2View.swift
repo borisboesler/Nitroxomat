@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MARK: - Views: PPO2View
+// MARK: - PPO2View
 
 struct PPO2View: View {
   @Binding var PPO2Value: Double
@@ -20,19 +20,19 @@ struct PPO2View: View {
       // TODO: need continuous updates: https://stackoverflow.com/questions/56725084/swiftui-how-to-get-continuous-updates-from-slider
       Slider(value: $PPO2Value, in: PPO2Minimum ... PPO2Maximum, step: 0.1,
              onEditingChanged: { _ in
-        // store value in user defaults
-        defaults.set(PPO2Value, forKey: keyPPO2)
-        // log using slider
-        loggerGUI.debug("slider ppO2 moved to \(PPO2Value)")
+               // store value in user defaults
+               defaults.set(PPO2Value, forKey: keyPPO2)
+               // log using slider
+               loggerGUI.debug("slider ppO2 moved to \(PPO2Value)")
 
-        // update UI
-        self.MODValue = gasMixture.getMOD(withMaxPPO2: self.PPO2Value)
-        self.EADValue = gasMixture.getEAD(withMaxPPO2: self.PPO2Value)
+               // update UI
+               self.MODValue = gasMixture.getMOD(withMaxPPO2: self.PPO2Value)
+               self.EADValue = gasMixture.getEAD(withMaxPPO2: self.PPO2Value)
 
-        loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(gasMixture.fractionOxygen)) = \(self.MODValue)")
-        loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
-      })
-      .accentColor(Color.green)
+               loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(gasMixture.fractionOxygen)) = \(self.MODValue)")
+               loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
+             })
+             .accentColor(Color.green)
 
       HStack {
         // this is not nice, but better than fixed
@@ -53,9 +53,9 @@ struct PPO2View: View {
 }
 
 #if TRUE_EQUALS_FALSE
-struct PPO2View_Previews: PreviewProvider {
-  static var previews: some View {
-    PPO2View(PPO2Value: $PPO2Value, MODValue: $MODValue, EADValue: $EADValue)
+  struct PPO2View_Previews: PreviewProvider {
+    static var previews: some View {
+      PPO2View(PPO2Value: $PPO2Value, MODValue: $MODValue, EADValue: $EADValue)
+    }
   }
-}
 #endif

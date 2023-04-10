@@ -10,7 +10,7 @@ import SwiftUI
 private let bundleVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "no build"
 private let bundleShortVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "no version"
 
-// MARK: - Views: AboutView
+// MARK: - AboutView
 
 struct AboutView: View {
   var body: some View {
@@ -24,20 +24,19 @@ struct AboutView: View {
       Spacer()
       Text("Version: \(bundleShortVersion)")
         .font(.title2)
-#if DEBUG
-      Spacer()
-      VStack {
-        Text("DEBUG Build")
-        Text("Bundle version: \(bundleVersion)")
-      }
-      .padding(5)
-      .background(Color.red)
-      .cornerRadius(10)
-#endif
+      #if DEBUG
+        Spacer()
+        VStack {
+          Text("DEBUG Build")
+          Text("Bundle version: \(bundleVersion)")
+        }
+        .padding(5)
+        .background(Color.red)
+        .cornerRadius(10)
+      #endif
       Spacer()
     }
     .padding(5)
-    .navigationBarTitle("About " + appName, displayMode: .inline)
   }
 }
 

@@ -7,6 +7,11 @@
 ### Bug Fixes
 - Fix Setting `Info.plist`
 
+### Features
+- Replace Deprecated Navigation Methods
+
+    **BREAKING CHANGE**: Requires at least iOS 16.0
+
 
 <a name="Version/1.0.3"></a>
 ## [Version/1.0.3] - 2022-12-23

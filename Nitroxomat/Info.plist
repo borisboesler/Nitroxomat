@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleShortVersionString</key>
-	<string>0.0.0-8-g7b9800c</string>
+	<string>0.0.0-14-gd5c610d</string>
 	<key>CFBundleVersion</key>
-	<string>Version/0.0.0-8-g7b9800c-dirty</string>
+	<string>Version/0.0.0-14-gd5c610d-dirty</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
