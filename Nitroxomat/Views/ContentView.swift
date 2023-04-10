@@ -42,6 +42,7 @@ let appName = "Nitroxomat"
 // MARK: - Nitroxomat Loggers
 
 import XCGLogger
+
 // In your AppDelegate (or other global file), declare a global constant to the default XCGLogger instance.
 
 let loggerMix = XCGLogger(identifier: "Nitroxomoat (Mixture)")
@@ -63,11 +64,11 @@ let defaultPPO2: Double = defaults.object(forKey: keyPPO2) as? Double ?? default
 /// read fraction of O2 from settings or use defaultFO2Value
 let defaultFO2: Double = defaults.object(forKey: keyFO2) as? Double ?? defaultFO2Value
 
-/// check if the user confirmed to be a certified Nitrox diver
+// check if the user confirmed to be a certified Nitrox diver
 #if DEBUG
-private let defaultShowLegalNotice = true
+  private let defaultShowLegalNotice = true
 #else
-private let defaultShowLegalNotice = defaults.object(forKey: keyShowLegalNotice) as? Bool ?? true
+  private let defaultShowLegalNotice = defaults.object(forKey: keyShowLegalNotice) as? Bool ?? true
 #endif
 
 // MARK: - Nitroxomat UI Configurtion
@@ -77,7 +78,7 @@ private let defaultShowLegalNotice = defaults.object(forKey: keyShowLegalNotice)
 /// create a nitrox calculator with default PPO2 and PO2
 var gasMixture = GasMixture(withOxygen: defaultFO2)
 
-// MARK: - Views: ContentView
+// MARK: - ContentView
 
 struct ContentView: View {
   /// the current PPO2
@@ -91,9 +92,9 @@ struct ContentView: View {
 
   @State private var showLegalNotice: Bool = defaultShowLegalNotice
 
-  // the interface on the screen
+  /// the interface on the screen
   var body: some View {
-    NavigationView {
+    NavigationStack {
       VStack {
         // the PPO2 Slider
         PPO2View(PPO2Value: $PPO2Value, MODValue: $MODValue, EADValue: $EADValue)
@@ -117,9 +118,9 @@ struct ContentView: View {
         EADView(PPO2Value: $PPO2Value, FO2Value: $FO2Value, MODValue: $MODValue, EADValue: $EADValue)
       } // VStack
       .padding(30)
-      .navigationBarTitle(appName)
-      .navigationBarItems(
-        leading:
+      .navigationTitle(appName)
+      .toolbar {
+        ToolbarItem(placement: .navigationBarLeading) {
           Button(action: {
             // reset to default PPO2 and gas-mixture AIR
             self.PPO2Value = defaultPPO2Value
@@ -136,25 +137,24 @@ struct ContentView: View {
             loggerGUI.debug("reset sliders")
             loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(gasMixture.fractionOxygen)) = \(self.MODValue)")
             loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
-          }, label: { Text("Reset") }),
-        trailing:
-          NavigationLink(destination: AboutView()) {
-            HStack {
-              Image(systemName: "info.circle")
-                .imageScale(.large)
-            }
-          }
-      )
+          }, label: { Text("Reset") })
+        }
 
-    } // NavigationView
-    .navigationViewStyle(StackNavigationViewStyle())
+        ToolbarItem(placement: .navigationBarTrailing) {
+          NavigationLink(destination: AboutView()) {
+            Image(systemName: "info.circle")
+              .imageScale(.large)
+          }
+        }
+      } // toolbar
+    } // NavigationStack
     // let the user confirm that (s)he is a certified nitrox diver
     .sheet(isPresented: self.$showLegalNotice,
            onDismiss: {
-      self.showLegalNotice = false
-      defaults.set(self.showLegalNotice, forKey: keyShowLegalNotice)
-      loggerGUI.debug("set defaults.\(keyShowLegalNotice) notice to \(self.showLegalNotice)")
-    },
+             self.showLegalNotice = false
+             defaults.set(self.showLegalNotice, forKey: keyShowLegalNotice)
+             loggerGUI.debug("set defaults.\(keyShowLegalNotice) notice to \(self.showLegalNotice)")
+           },
            content: { LegalNoticeView() })
   } // var body: some View
 } // struct ContentView: View

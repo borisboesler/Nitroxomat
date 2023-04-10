@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MARK: - Views: ModView
+// MARK: - MODView
 
 struct MODView: View {
   @Binding var PPO2Value: Double
@@ -20,24 +20,24 @@ struct MODView: View {
       Text("MOD: \(MODValue, specifier: "%3.1f")m") // round up
       Slider(value: $MODValue, in: MODMinimum ... MODMaximum, step: 1.0,
              onEditingChanged: { _ in
-        FO2Value = gasMixture.getBestFractionO2(forMOD: MODValue, withPPO2: PPO2Value)
-        defaults.set(FO2Value, forKey: keyFO2)
-        // set FO2 in gas mixture
-        gasMixture.fractionOxygen = FO2Value
+               FO2Value = gasMixture.getBestFractionO2(forMOD: MODValue, withPPO2: PPO2Value)
+               defaults.set(FO2Value, forKey: keyFO2)
+               // set FO2 in gas mixture
+               gasMixture.fractionOxygen = FO2Value
 
-        loggerGUI.debug("slider MOD moved to \(MODValue)")
+               loggerGUI.debug("slider MOD moved to \(MODValue)")
 
-        // update UI - does not work
-        self.MODValue = gasMixture.getMOD(withMaxPPO2: self.PPO2Value)
-        self.EADValue = gasMixture.getEAD(withMaxPPO2: self.PPO2Value)
+               // update UI - does not work
+               self.MODValue = gasMixture.getMOD(withMaxPPO2: self.PPO2Value)
+               self.EADValue = gasMixture.getEAD(withMaxPPO2: self.PPO2Value)
 
-        loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(gasMixture.fractionOxygen)) = \(self.MODValue)")
-        loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
-      },
+               loggerMix.debug("MOD (maxPPO2:\(self.PPO2Value), fO2:\(gasMixture.fractionOxygen)) = \(self.MODValue)")
+               loggerMix.debug("EAD (maxPPO2:\(self.PPO2Value), MOD:\(self.MODValue) = \(self.EADValue)")
+             },
              minimumValueLabel: Text("\(Int(MODMinimum))m"),
              maximumValueLabel: Text("\(Int(MODMaximum))m"),
              label: { Text("") })
-      .accentColor(Color.blue)
+        .accentColor(Color.blue)
     }
     // .background(Color.gray)
     // or
@@ -50,19 +50,19 @@ struct MODView: View {
 }
 
 #if TRUE_EQUALS_FALSE
-struct MODView_Previews: PreviewProvider {
-  /// the current PPO2
-  @State private var PPO2Value: Double = defaultPPO2
-  /// the current fO2
-  @State private var FO2Value: Double = defaultFO2
-  /// the current MOD
-  @State private var MODValue: Double = gasMixture.getMOD(withMaxPPO2: defaultPPO2)
-  /// the current EAD
-  @State private var EADValue: Double = gasMixture.getEAD(withMaxPPO2: defaultPPO2)
+  struct MODView_Previews: PreviewProvider {
+    /// the current PPO2
+    @State private var PPO2Value: Double = defaultPPO2
+    /// the current fO2
+    @State private var FO2Value: Double = defaultFO2
+    /// the current MOD
+    @State private var MODValue: Double = gasMixture.getMOD(withMaxPPO2: defaultPPO2)
+    /// the current EAD
+    @State private var EADValue: Double = gasMixture.getEAD(withMaxPPO2: defaultPPO2)
 
-  static var previews: some View {
-    // FIXME: How do we fix this?
-    MODView(PPO2Value: $PPO2Value, FO2Value: $FO2Value, MODValue: $MODValue, EADValue: $EADValue)
+    static var previews: some View {
+      // FIXME: How do we fix this?
+      MODView(PPO2Value: $PPO2Value, FO2Value: $FO2Value, MODValue: $MODValue, EADValue: $EADValue)
+    }
   }
-}
 #endif

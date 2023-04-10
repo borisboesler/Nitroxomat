@@ -34,7 +34,7 @@ struct LegalNoticeView: View {
         print("OK")
         self.presentationMode.wrappedValue.dismiss()
       }, label: { Text("I'm a certified Nitrox diver") })
-      .padding(.bottom, 50)
+        .padding(.bottom, 50)
     }
     .padding(50)
   }

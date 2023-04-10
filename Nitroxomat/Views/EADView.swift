@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MARK: - Views: EADView
+// MARK: - EADView
 
 struct EADView: View {
   @Binding var PPO2Value: Double
@@ -24,8 +24,8 @@ struct EADView: View {
              minimumValueLabel: Text("\(Int(EADMinimum))m"),
              maximumValueLabel: Text("\(Int(EADMaximum))m"),
              label: { Text("") }) // TODO: Give the label some sense to live.
-      .accentColor(Color.blue)
-      .disabled(true)
+        .accentColor(Color.blue)
+        .disabled(true)
     }
     // .background(Color.gray)
     // or
@@ -38,20 +38,20 @@ struct EADView: View {
 }
 
 #if TRUE_EQUALS_FALSE
-struct EADView_Previews: PreviewProvider {
-  /// the current PPO2
-  @State private var PPO2Value: Double = defaultPPO2
-  /// the current fO2
-  @State private var FO2Value: Double = defaultFO2
-  /// the current MOD
-  @State private var MODValue: Double = gasMixture.getMOD(withMaxPPO2: defaultPPO2)
-  /// the current EAD
-  @State private var EADValue: Double = gasMixture.getEAD(withMaxPPO2: defaultPPO2)
+  struct EADView_Previews: PreviewProvider {
+    /// the current PPO2
+    @State private var PPO2Value: Double = defaultPPO2
+    /// the current fO2
+    @State private var FO2Value: Double = defaultFO2
+    /// the current MOD
+    @State private var MODValue: Double = gasMixture.getMOD(withMaxPPO2: defaultPPO2)
+    /// the current EAD
+    @State private var EADValue: Double = gasMixture.getEAD(withMaxPPO2: defaultPPO2)
 
-  static var previews: some View {
-    // FIXME: How do we fix this?
-    EADView(PPO2Value: $PPO2Value, FO2Value: $FO2Value,
-            MODValue: $MODValue, EADValue: $EADValue)
+    static var previews: some View {
+      // FIXME: How do we fix this?
+      EADView(PPO2Value: $PPO2Value, FO2Value: $FO2Value,
+              MODValue: $MODValue, EADValue: $EADValue)
+    }
   }
-}
 #endif

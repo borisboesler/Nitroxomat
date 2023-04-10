@@ -107,6 +107,7 @@
 				25AF4CB2285107370030FC09 /* EADView.swift */,
 				25AF4CB4285107630030FC09 /* LegalNoticeView.swift */,
 				25AF4CB6285107850030FC09 /* AboutView.swift */,
+				25F9763B2851023C00510973 /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,10 +136,9 @@
 			isa = PBXGroup;
 			children = (
 				25AF4CB8285107E20030FC09 /* Info.plist */,
+				25F976392851023C00510973 /* NitroxomatApp.swift */,
 				25AF4CA9285105D80030FC09 /* Views */,
 				25AF4CA8285105A10030FC09 /* Models */,
-				25F976392851023C00510973 /* NitroxomatApp.swift */,
-				25F9763B2851023C00510973 /* ContentView.swift */,
 				25F9763D2851023E00510973 /* Assets.xcassets */,
 				25F9763F2851023E00510973 /* Preview Content */,
 			);
@@ -308,6 +308,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		2571BDB62955B6D200D625CF /* Run Script - Run swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -359,7 +360,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n# for debugging/inspection purposses:\n# for line in $(printenv); do echo $line; done\n\n# for a RELEASE our current HEAD has a tag. we use this tag as version,\n# assuming that the tag format is release/x.y.z[bla]. during development\n# this number is quite a mess. after building the version is correct\nrelease=$(basename $(git describe --tags --always))\necho \"RELEASE = \" $release\n\n# to be conform with some apple requirements (see above bundle version) we use release + hash\n#\U0013 build=$release-$(git log --oneline HEAD^1.. | awk '{print $1 }')\n# or\n# build=$(git describe --tags --always --dirty)\n# build=`git log -n1 --date=short --format=\"%ad (%h)\"`\nbuild=$(git describe --dirty)\necho \"BUILD = \" $build\n\n# the plist file to be modified\nplist_file=$INFOPLIST_FILE\n\n# the build configuration (Debug|Release)\n#echo $CONFIGURATION\n\n# PlistBuddy executable\nPLISTBUDDY=/usr/libexec/PlistBuddy\n\n# set the \"short version\" to $build\n#$PLISTBUDDY -c \"Add :CFBundleShortVersionString string $release\" \"$plist_file\"\n$PLISTBUDDY -c \"Set :CFBundleShortVersionString $release\" \"$plist_file\"\n\n# if this is a RELEASE build then set CFBundleVersion to $release, else to build\ncase $CONFIGURATION in\n  Release)  $PLISTBUDDY -c \"Set :CFBundleVersion $release\" \"$plist_file\";;\n  *)        $PLISTBUDDY -c \"Set :CFBundleVersion $build\" \"$plist_file\";;\nesac\n\n# end-of-file\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n# for debugging/inspection purposses:\n# for line in $(printenv); do echo $line; done\n\n# for a RELEASE our current HEAD has a tag. we use this tag as version,\n# assuming that the tag format is release/x.y.z[bla]. during development\n# this number is quite a mess. after building the version is correct\nrelease=$(basename $(git describe --tags --always))\n\n# to be conform with some apple requirements (see above bundle version) we use release + hash\n# build=$release-$(git log --oneline HEAD^1.. | awk '{print $1 }')\n# or\n# build=$(git describe --tags --always --dirty)\n# build=`git log -n1 --date=short --format=\"%ad (%h)\"`\nbuild=$(git describe --dirty)\n\n# the plist file to be modified\nplist_path=$INFOPLIST_FILE\n\n# the build configuration (Debug|Release)\n#echo $CONFIGURATION\n\n# PlistBuddy executable\nPLISTBUDDY=/usr/libexec/PlistBuddy\n\n#\n# set the \"short version\" to $build\n#\n\n# add :CFBundleShortVersionString if it does not exits\n$PLISTBUDDY -c \"Print :CFBundleShortVersionString\" \"$plist_path\" >> /dev/null 2>> /dev/null\n# Plistbuddy returns 0 on success\nhasnot_CFBundleShortVersionString=$?\nif [ $hasnot_CFBundleShortVersionString -ne 0 ]; then\n  $PLISTBUDDY -c \"Add :CFBundleShortVersionString string\" \"$plist_path\"\nfi\n# set :CFBundleShortVersionString\n$PLISTBUDDY -c \"Set :CFBundleShortVersionString $release\" \"$plist_path\"\n\n#\n# if this is a RELEASE build then set CFBundleVersion to $release, else to build\n#\n\n# add :CFBundleVersion if it does not exits\n$PLISTBUDDY -c \"Print :CFBundleVersion\" \"$plist_path\" >> /dev/null 2>> /dev/null\n# Plistbuddy returns 0 on success\nhasnot_CFBundleVersion=$?\nif [ $hasnot_CFBundleVersion -ne 0 ]; then\n  $PLISTBUDDY -c \"Add :CFBundleVersion string\" \"$plist_path\"\nfi\n# set :CFBundleVersion\ncase $CONFIGURATION in\n  Release)  $PLISTBUDDY -c \"Set :CFBundleVersion $release\" \"$plist_path\";;\n  *)        $PLISTBUDDY -c \"Set :CFBundleVersion $build\" \"$plist_path\";;\nesac\n\n# end-of-file\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -464,7 +465,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -520,7 +521,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -545,15 +546,13 @@
 				INFOPLIST_FILE = Nitroxomat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borisboesler.iOS.Nitroxomat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -576,15 +575,13 @@
 				INFOPLIST_FILE = Nitroxomat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borisboesler.iOS.Nitroxomat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
